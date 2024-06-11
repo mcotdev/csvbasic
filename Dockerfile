@@ -4,6 +4,12 @@ FROM alpine:latest
 # Install Git, Python3, and pip3 without caching the index locally to keep the image small
 RUN apk add --no-cache git python3 py-pip
 
+# Create a virtual environment
+RUN python3 -m venv /venv
+
+# Update the PATH to include the virtual environment's bin directory
+ENV PATH="/venv/bin:$PATH"
+
 # Clone the GitHub repository into the /app directory (ensure the repository URL is correct)
 RUN git clone https://github.com/mcotdev/csvbasic.git /app
 
@@ -18,4 +24,5 @@ EXPOSE 5002
 
 # Specify the command to run when the container starts
 CMD ["python3", "csvbasic.py"]
+
 
