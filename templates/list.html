@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSV Files List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Uploaded CSV Files</h2>
+    <ul class="list-group">
+        {% for file in files %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>{{ file['csv_filename'] }}</strong> - {{ file['description'] }}
+                </div>
+                <div>
+                    <a href="{{ url_for('edit', id=file['id']) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{{ url_for('view_raw', id=file['id']) }}" class="btn btn-info btn-sm">View RAW</a>
+                    <a href="{{ url_for('download_csv', id=file['id']) }}" class="btn btn-success btn-sm">Download CSV</a>
+                    <a href="{{ url_for('convert_to_parquet', id=file['id']) }}" class="btn btn-secondary btn-sm">Convert to Parquet</a>
+                    <a href="{{ url_for('view_parquet', id=file['id']) }}" class="btn btn-primary btn-sm">View Parquet</a>
+                    <form action="{{ url_for('delete', id=file['id']) }}" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}" class="btn btn-primary mt-2">Upload Another File</a>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit CSV Description</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Edit CSV Description</h2>
+    <form action="{{ url_for('edit', id=file['id']) }}" method="post" class="form-inline">
+        <div class="form-group mb-2">
+            <label for="description" class="sr-only">Description</label>
+            <input type="text" name="description" class="form-control" value="{{ file['description'] }}">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Update</button>
+    </form>
+    <a href="{{ url_for('list_files') }}" class="btn btn-secondary">Back to List</a>
+</div>
+</body>
+</html>
+
+
+
+
+
+
