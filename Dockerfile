@@ -4,7 +4,7 @@ FROM alpine:latest
 RUN apk add --no-cache git python3 py-pip
 
 # Clone the GitHub repository
-RUN git clone https://github.com/your-username/your-repo-name.git /app
+RUN git clone https://github.com/mcotdev/csvbasic.git /app
 
 # Set working directory to /app
 WORKDIR /app
@@ -16,4 +16,4 @@ RUN pip3 install -r requirements.txt
 EXPOSE 5002
 
 # Run command when container starts
-CMD ["python3", "mytest.py"]
+CMD ["python3", "csvbasic.py"]
